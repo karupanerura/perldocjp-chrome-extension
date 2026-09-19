@@ -74,8 +74,7 @@ function init_setting () {
 }
 
 async function update_perldocjp_db () {
-  const now = (new Date).getTime();
-  const resp = await fetch("https://perldoc.jp/static/docs.json?time=" + now);
+  const resp = await fetch("https://perldoc.jp/static/docs.json");
   if (resp.status === 200) {
     perldocjp_db = await resp.json();
     chrome.storage.local.set({'perldocjp': JSON.stringify(perldocjp_db)});
